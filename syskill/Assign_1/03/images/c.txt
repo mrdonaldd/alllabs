@@ -1,0 +1,5 @@
+Given a specific extension and a directory, write a shell script called extrm.sh to remove the extension
+from the name of any file with that specific extension. For example, assume that the extension jpg
+is given as input to the script along with a path to a directory, and the given folder contains two files
+that have that extension, named image1.jpg and image2.jpg. The script in extrm.sh should rename
+these two files these two files to image1 and image2, respectively.
