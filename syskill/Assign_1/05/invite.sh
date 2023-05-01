@@ -70,12 +70,3 @@ if [ -n "$result" ]; then
 else
     printf 'No match found for pattern'
 fi
-
-
-YMD=$(cat $2 | awk '{print $3'}) 
-Year=$(echo $YMD | cut -c 1-4)
-Month=$(echo $YMD | cut -c 5-6)
-Date=$(echo $YMD | cut -c 6-7)
-
-echo "$Month"
-
