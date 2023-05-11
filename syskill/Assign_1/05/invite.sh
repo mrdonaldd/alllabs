@@ -46,7 +46,7 @@ else
 fi
 
 #####################################
-
+# Split month from YMD
 
 # while IFS="," read -r firstName lastName birthDate
 # do
@@ -61,12 +61,20 @@ fi
 #         echo "$Month"
 # done < guest.csv
 
-#####################################
+# ^ Upper line I copied from stackoverflow 
 
-result=$( grep -e $MON_NUM guest.csv) 
+file=$2
 
-if [ -n "$result" ]; then
-    printf '%s\n' "$result"
-else
-    printf 'No match found for pattern'
-fi
+while read -r line; do
+  YMD=$(echo -e "$line" | awk '{print $3'}) 
+  Year=$(echo $YMD | cut -c 1-4)
+  Month=$(echo $YMD | cut -c 5-6)
+  Date=$(echo $YMD | cut -c 6-7)
+  # echo "$Month"
+  if [ "$MON_NUM" == "$Month" ]
+  then
+    echo -e "$line"
+  else
+    continue
+  fi
+done <$file 
